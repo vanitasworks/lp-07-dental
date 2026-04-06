@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>さくら歯科クリニック | 丁寧な治療・痛くない歯医者</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue: #0066cc;
+      --blue-light: #4d9de0;
+      --blue-pale: #e8f4fd;
+      --mint: #e8f8f5;
+      --text: #1a2e45;
+      --gray: #6b7280;
+      --white: #ffffff;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif; color: var(--text); background: white; line-height: 1.8; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 14px 56px; background: white; box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo-icon { width: 36px; height: 36px; background: var(--blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
+    .nav-logo-text { font-size: 1rem; font-weight: 700; color: var(--text); }
+    .nav-right { display: flex; align-items: center; gap: 24px; }
+    .nav-tel { font-size: 1.2rem; font-weight: 700; color: var(--blue); text-decoration: none; }
+    .nav-tel small { font-size: 0.7rem; font-weight: 400; color: var(--gray); display: block; line-height: 1; }
+    .nav-reserve { background: var(--blue); color: white; padding: 10px 20px; text-decoration: none; border-radius: 8px; font-size: 0.82rem; font-weight: 600; transition: background 0.3s; }
+    .nav-reserve:hover { background: var(--blue-light); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh; background: linear-gradient(135deg, var(--blue-pale) 0%, #f0f8ff 100%);
+      display: grid; grid-template-columns: 1fr 1fr; padding-top: 70px;
+    }
+    .hero-content { display: flex; flex-direction: column; justify-content: center; padding: 80px 64px; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--blue); color: white; padding: 6px 16px; border-radius: 4px; font-size: 0.78rem; font-weight: 600; margin-bottom: 28px; width: fit-content; }
+    .hero-title { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 800; line-height: 1.4; margin-bottom: 24px; }
+    .hero-title em { color: var(--blue); font-style: normal; }
+    .hero-desc { color: var(--gray); font-size: 0.95rem; line-height: 2; margin-bottom: 40px; }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 48px; }
+    .btn-blue { display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; background: var(--blue); color: white; text-decoration: none; border-radius: 8px; font-weight: 700; font-size: 0.95rem; transition: all 0.3s; box-shadow: 0 4px 16px rgba(0,102,204,0.25); }
+    .btn-blue:hover { background: var(--blue-light); transform: translateY(-2px); }
+    .btn-tel { display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; border: 2px solid var(--blue); color: var(--blue); text-decoration: none; border-radius: 8px; font-weight: 700; font-size: 0.95rem; transition: all 0.3s; }
+    .btn-tel:hover { background: var(--blue-pale); }
+    .hero-points { display: flex; gap: 24px; }
+    .point-item { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; font-weight: 600; color: var(--blue); }
+    .hero-visual { background: var(--blue-pale); display: flex; align-items: center; justify-content: center; font-size: 8rem; position: relative; }
+    .hero-visual::after { content: '🦷'; position: absolute; bottom: 40px; right: 40px; font-size: 3rem; opacity: 0.2; }
+
+    /* FEATURES */
+    .features { padding: 80px 64px; background: var(--blue); color: white; }
+    .features-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; max-width: 960px; margin: 0 auto; }
+    .feat { text-align: center; padding: 32px 20px; border-right: 1px solid rgba(255,255,255,0.15); }
+    .feat:last-child { border-right: none; }
+    .feat-icon { font-size: 2.5rem; margin-bottom: 16px; display: block; }
+    .feat-title { font-size: 0.9rem; font-weight: 700; margin-bottom: 8px; }
+    .feat-desc { font-size: 0.78rem; opacity: 0.75; line-height: 1.7; }
+
+    /* MENU */
+    .menu { padding: 100px 64px; background: white; }
+    .section-head { text-align: center; margin-bottom: 64px; }
+    .sec-tag { display: inline-block; background: var(--blue-pale); color: var(--blue); padding: 4px 16px; border-radius: 40px; font-size: 0.78rem; font-weight: 700; margin-bottom: 16px; }
+    .sec-title { font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 800; }
+    .menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 960px; margin: 0 auto; }
+    .menu-card { border: 1px solid #e5e7eb; border-radius: 12px; padding: 36px 28px; transition: all 0.3s; }
+    .menu-card:hover { border-color: var(--blue); box-shadow: 0 4px 20px rgba(0,102,204,0.1); }
+    .menu-icon { font-size: 2.5rem; margin-bottom: 16px; display: block; }
+    .menu-name { font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; }
+    .menu-desc { font-size: 0.82rem; color: var(--gray); line-height: 1.8; margin-bottom: 16px; }
+    .menu-price { font-size: 0.9rem; font-weight: 700; color: var(--blue); }
+
+    /* DOCTOR */
+    .doctor { padding: 100px 64px; background: var(--blue-pale); }
+    .doctor-inner { display: grid; grid-template-columns: 1fr 2fr; gap: 64px; max-width: 860px; margin: 0 auto; align-items: center; }
+    .doctor-photo { aspect-ratio: 3/4; background: white; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 6rem; }
+    .doc-label { font-size: 0.72rem; letter-spacing: 0.2em; color: var(--blue); font-weight: 700; margin-bottom: 8px; }
+    .doc-name { font-size: 2rem; font-weight: 700; margin-bottom: 4px; }
+    .doc-kana { font-size: 0.85rem; color: var(--gray); margin-bottom: 24px; }
+    .doc-career { list-style: none; font-size: 0.85rem; color: var(--gray); line-height: 2.2; margin-bottom: 24px; }
+    .doc-career li::before { content: '— '; }
+    .doc-message { font-size: 0.9rem; line-height: 2.2; padding: 24px; background: white; border-radius: 12px; border-left: 3px solid var(--blue); }
+
+    /* VOICE */
+    .voice { padding: 100px 64px; background: white; }
+    .voice-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 960px; margin: 0 auto; }
+    .voice-card { background: var(--blue-pale); border-radius: 12px; padding: 32px 24px; }
+    .voice-stars { color: #fbbf24; font-size: 1.1rem; margin-bottom: 12px; }
+    .voice-text { font-size: 0.85rem; line-height: 1.9; margin-bottom: 16px; }
+    .voice-author { font-size: 0.78rem; color: var(--gray); }
+
+    /* INFO */
+    .info { padding: 100px 64px; background: var(--blue-pale); display: grid; grid-template-columns: 1fr 1fr; gap: 64px; max-width: 1100px; margin: 0 auto; }
+    .info-table { width: 100%; border-collapse: collapse; }
+    .info-table tr { border-bottom: 1px solid #d1e8f8; }
+    .info-table th { text-align: left; padding: 14px 0; font-size: 0.78rem; color: var(--blue); font-weight: 600; width: 35%; }
+    .info-table td { padding: 14px 0; font-size: 0.88rem; }
+    .map-box { background: white; height: 100%; min-height: 260px; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--gray); font-size: 0.82rem; }
+
+    /* CTA */
+    .cta { padding: 100px 64px; background: var(--blue); color: white; text-align: center; }
+    .cta-title { font-size: clamp(1.5rem, 3vw, 2.5rem); font-weight: 800; margin-bottom: 16px; }
+    .cta-sub { opacity: 0.85; margin-bottom: 48px; }
+    .cta-actions { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+    .btn-white { display: inline-flex; align-items: center; gap: 10px; padding: 16px 36px; background: white; color: var(--blue); text-decoration: none; border-radius: 8px; font-weight: 700; font-size: 1rem; transition: all 0.3s; }
+    .btn-white:hover { transform: translateY(-2px); }
+    .btn-white-outline { display: inline-flex; align-items: center; gap: 10px; padding: 16px 36px; border: 2px solid white; color: white; text-decoration: none; border-radius: 8px; font-weight: 700; font-size: 1rem; transition: all 0.3s; }
+    .btn-white-outline:hover { background: rgba(255,255,255,0.1); }
+
+    footer { background: var(--text); color: rgba(255,255,255,0.4); text-align: center; padding: 28px; font-size: 0.78rem; }
+
+    @media (max-width: 768px) {
+      nav { padding: 12px 20px; }
+      .nav-tel { display: none; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-content { padding: 48px 24px; }
+      .hero-visual { height: 240px; }
+      .features { padding: 60px 24px; }
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
+      .feat { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.15); }
+      .menu, .doctor, .voice, .info, .cta { padding: 70px 24px; }
+      .menu-grid, .voice-grid { grid-template-columns: 1fr; }
+      .doctor-inner { grid-template-columns: 1fr; }
+      .info { grid-template-columns: 1fr; gap: 40px; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-icon">🦷</div>
+      <div class="nav-logo-text">さくら歯科クリニック</div>
+    </a>
+    <div class="nav-right">
+      <a href="tel:0312345678" class="nav-tel">
+        <small>お電話でのご予約</small>
+        03-1234-5678
+      </a>
+      <a href="#cta" class="nav-reserve">WEB予約</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-content">
+      <span class="hero-badge">🏥 渋谷区・保険診療対応</span>
+      <h1 class="hero-title">
+        <em>痛くない</em>治療で、<br>
+        歯医者が苦手な方も<br>
+        安心して通える
+      </h1>
+      <p class="hero-desc">最新の麻酔技術と丁寧なカウンセリングで、<br>歯医者が苦手な方にこそ来ていただきたいクリニックです。</p>
+      <div class="hero-actions">
+        <a href="#cta" class="btn-blue">📅 WEB予約する</a>
+        <a href="tel:0312345678" class="btn-tel">📞 お電話で予約</a>
+      </div>
+      <div class="hero-points">
+        <div class="point-item">✓ 痛くない治療</div>
+        <div class="point-item">✓ 夜20時まで診療</div>
+        <div class="point-item">✓ 駐車場完備</div>
+      </div>
+    </div>
+    <div class="hero-visual">🦷</div>
+  </section>
+
+  <section class="features">
+    <div class="features-grid">
+      <div class="feat"><span class="feat-icon">😌</span><div class="feat-title">無痛治療</div><p class="feat-desc">電動麻酔器で痛みを最小限に</p></div>
+      <div class="feat"><span class="feat-icon">🌙</span><div class="feat-title">夜20時まで</div><p class="feat-desc">仕事帰りでも通いやすい</p></div>
+      <div class="feat"><span class="feat-icon">💻</span><div class="feat-title">WEB予約</div><p class="feat-desc">24時間いつでも予約可能</p></div>
+      <div class="feat"><span class="feat-icon">🏥</span><div class="feat-title">保険診療</div><p class="feat-desc">一般歯科から矯正まで対応</p></div>
+    </div>
+  </section>
+
+  <section class="menu">
+    <div class="section-head">
+      <span class="sec-tag">診療メニュー</span>
+      <h2 class="sec-title">充実した診療内容</h2>
+    </div>
+    <div class="menu-grid">
+      <div class="menu-card"><span class="menu-icon">🦷</span><div class="menu-name">一般歯科</div><p class="menu-desc">虫歯・歯周病の治療。保険診療で対応します。</p><div class="menu-price">保険適用</div></div>
+      <div class="menu-card"><span class="menu-icon">✨</span><div class="menu-name">ホワイトニング</div><p class="menu-desc">医院専用の薬剤で白く美しい歯へ。自然な白さを実現。</p><div class="menu-price">¥30,000〜</div></div>
+      <div class="menu-card"><span class="menu-icon">😬</span><div class="menu-name">インビザライン矯正</div><p class="menu-desc">目立たないマウスピース矯正。取り外し可能で快適。</p><div class="menu-price">¥550,000〜</div></div>
+      <div class="menu-card"><span class="menu-icon">🔬</span><div class="menu-name">精密根管治療</div><p class="menu-desc">マイクロスコープを使用した高精度な根管治療。</p><div class="menu-price">保険〜自費</div></div>
+      <div class="menu-card"><span class="menu-icon">👶</span><div class="menu-name">小児歯科</div><p class="menu-desc">お子様が怖くない・楽しい歯医者を目指します。</p><div class="menu-price">保険適用</div></div>
+      <div class="menu-card"><span class="menu-icon">🛡️</span><div class="menu-name">予防歯科・定期検診</div><p class="menu-desc">クリーニングとフッ素塗布で虫歯・歯周病を予防。</p><div class="menu-price">¥3,000〜</div></div>
+    </div>
+  </section>
+
+  <section class="doctor">
+    <div class="section-head">
+      <span class="sec-tag">院長紹介</span>
+      <h2 class="sec-title">信頼できる歯科医師</h2>
+    </div>
+    <div class="doctor-inner">
+      <div class="doctor-photo">👨‍⚕️</div>
+      <div>
+        <div class="doc-label">DOCTOR</div>
+        <div class="doc-name">山田 誠一</div>
+        <div class="doc-kana">やまだ せいいち</div>
+        <ul class="doc-career">
+          <li>東京歯科大学 卒業</li>
+          <li>大学病院口腔外科 勤務（5年）</li>
+          <li>インビザライン認定医</li>
+          <li>日本歯周病学会 会員</li>
+        </ul>
+        <div class="doc-message">
+          「歯医者が怖い」という気持ちをよく理解しています。だからこそ、痛みを最小限にする治療と、丁寧な説明を心がけています。まずはお気軽にご相談ください。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="voice">
+    <div class="section-head">
+      <span class="sec-tag">患者様の声</span>
+      <h2 class="sec-title">通院されている方の声</h2>
+    </div>
+    <div class="voice-grid">
+      <div class="voice-card"><div class="voice-stars">★★★★★</div><p class="voice-text">以前の歯医者でトラウマがありましたが、ここは全く痛くなくて驚きました。先生の説明もわかりやすく安心して通えています。</p><div class="voice-author">40代・女性</div></div>
+      <div class="voice-card"><div class="voice-stars">★★★★★</div><p class="voice-text">子供が虫歯になりやすく困っていましたが、先生が楽しく治療してくれるので今では自分から「歯医者行く！」と言うようになりました。</p><div class="voice-author">30代・お子様4歳の保護者</div></div>
+      <div class="voice-card"><div class="voice-stars">★★★★★</div><p class="voice-text">夜遅くまで診療しているので仕事帰りに通えて助かります。WEB予約もすぐできて待ち時間もほとんどないです。</p><div class="voice-author">20代・会社員・男性</div></div>
+    </div>
+  </section>
+
+  <div style="background:var(--blue-pale);padding:100px 64px;">
+    <div class="info" style="padding:0;">
+      <div>
+        <h2 class="sec-title" style="margin-bottom:40px;">診療情報</h2>
+        <table class="info-table">
+          <tr><th>医院名</th><td>さくら歯科クリニック</td></tr>
+          <tr><th>住所</th><td>東京都渋谷区渋谷1-2-3 桜ビル2F</td></tr>
+          <tr><th>電話</th><td>03-1234-5678</td></tr>
+          <tr><th>診療時間</th><td>月〜金 9:00〜20:00 / 土 9:00〜17:00</td></tr>
+          <tr><th>休診日</th><td>日曜・祝日</td></tr>
+          <tr><th>アクセス</th><td>JR渋谷駅 東口より徒歩5分</td></tr>
+          <tr><th>駐車場</th><td>近隣コインパーキング利用（提携あり）</td></tr>
+        </table>
+      </div>
+      <div class="map-box">[ MAP ]</div>
+    </div>
+  </div>
+
+  <section class="cta" id="cta">
+    <h2 class="cta-title">まずはお気軽にご相談ください</h2>
+    <p class="cta-sub">初診の方・歯医者が苦手な方、大歓迎です</p>
+    <div class="cta-actions">
+      <a href="#" class="btn-white">📅 WEBで予約する</a>
+      <a href="tel:0312345678" class="btn-white-outline">📞 03-1234-5678</a>
+    </div>
+  </section>
+
+  <footer><p>© 2024 さくら歯科クリニック. ALL RIGHTS RESERVED.</p></footer>
+</body>
+</html>
